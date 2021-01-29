@@ -1,0 +1,10 @@
+<view class="page">
+    <view class="page__hd" wx:if="{{showPageIndex == 1}}">
+        选座页面
+    </view>
+    <view wx:if="{{showPageIndex == 2}}">
+        我的页面
+    </view>
+    <mp-tabbar style="position:fixed;bottom:0;width:100%;left:0;right:0;" list="{{list}}" bindchange="tabChange">
+    </mp-tabbar>
+</view>
