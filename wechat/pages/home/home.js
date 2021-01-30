@@ -14,6 +14,15 @@ Page({
         "iconPath": "/pages/images/my.png",
         "selectedIconPath": "/pages/images/my-selected.png"
     },
+      ],
+      siteAray:[
+        {day:'Monday',siteNumber:'12'},
+        {day:'Tuesday',siteNumber:'12'},
+        {day:'Wednesday',siteNumber:'12'},
+        {day:'Thursday',siteNumber:'12'},
+        {day:'Friday',siteNumber:'12'},
+        {day:'Saturday',siteNumber:'12'},
+        {day:'Sunday',siteNumber:'0'}
       ]
   },
   tabChange(e) {

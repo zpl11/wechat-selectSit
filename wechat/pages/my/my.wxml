@@ -1,0 +1,11 @@
+<!--pages/my/my.wxml-->
+<view>
+    <view>学号:20171305221</view>
+    <view>信誉积分:20171305221</view>
+    <view>在图书馆时间:20171305221</view>
+
+    <view>
+        <view>已预约座位信息:1.1日图书馆第三排第五列</view>
+        <button>取消预订</button>
+    </view>
+</view>
