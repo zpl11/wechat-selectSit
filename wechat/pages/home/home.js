@@ -16,13 +16,7 @@ Page({
     },
       ],
       siteAray:[
-        {day:'Monday',siteNumber:'12'},
-        {day:'Tuesday',siteNumber:'12'},
-        {day:'Wednesday',siteNumber:'12'},
-        {day:'Thursday',siteNumber:'12'},
-        {day:'Friday',siteNumber:'12'},
-        {day:'Saturday',siteNumber:'12'},
-        {day:'Sunday',siteNumber:'0'}
+        
       ]
   },
   tabChange(e) {
@@ -30,11 +24,60 @@ Page({
         showPageIndex : e.detail.item.showPage
       })
   },
+  formatNumber(n){
+    n = n.toString();
+    return n[1]?n:'0'+n;
+  },
+  formatTimeTwo(number, format) {
+    var formateArr = ['Y', 'M', 'D','H','M','S']; 
+    var returnArr = [];  
+    var date = new Date(number * 1000);  
+    returnArr.push(date.getFullYear());  
+    returnArr.push(this.formatNumber(date.getMonth() + 1));  
+    returnArr.push(this.formatNumber(date.getDate()));  
+    returnArr.push(this.formatNumber(date.getHours()));  
+    returnArr.push(this.formatNumber(date.getMinutes()));  
+    returnArr.push(this.formatNumber(date.getSeconds()));  
+     for (var i in returnArr) {    
+       format = format.replace(formateArr[i], returnArr[i]);  
+     }  
+     return format;
+   },
+  // 进入页面发送请求，查看当前可以使用的教室的数量
+  sendDateRequest(){
+    let _that = this;
+    // 在这里发送 ajax 请求，请求后台接口
+    wx.request({
+      url: 'http://localhost:8080/wechat/getRoomList',
+      method:'POST',
+      data: {
+      },
+      header: {
+        'Content-Type':'application/x-www-form-urlencoded'
+      },
+      success: function(res){
+        console.log(res)
+        var weekDay = ["星期天", "星期一", "星期二", "星期三", "星期四", "星期五", "星期六"];
+        for(let i = 0; i<res.data.length; i++){
+          res.data[i].roomTime = _that.formatTimeTwo(res.data[i].roomTime/1000,'Y/M/D')
+          let myDate = new Date(Date.parse(res.data[i].roomTime));
+          res.data[i].roomWeek = weekDay[myDate.getDay()]
+        }
+        _that.setData({
+          siteAray:res.data,
+        })
+      },
+      fail:function(res){
+        console.log(res);
+      }
+    })
+  },
+ 
   /**
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
-
+      this.sendDateRequest();
   },
 
   /**

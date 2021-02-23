@@ -1,0 +1,9 @@
+<view class="select-site">
+  <view wx:for="{{rowNumber}}" wx:for-item="rowItem" wx:key="item">
+    <view class="column-inlineblock" wx:for="{{columnNumber}}" wx:for-item="columnItem" wx:key="item">
+      <view class="site-block" bindtap="getClickPosition" data-row="{{rowItem}}" data-coluemn="{{columnItem}}">
+      </view>
+    </view>
+  </view>
+  
+</view>

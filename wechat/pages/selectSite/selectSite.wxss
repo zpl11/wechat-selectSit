@@ -1,0 +1,8 @@
+.select-site .column-inlineblock{
+  display: inline-block;
+}
+.select-site .site-block{
+  width: 1rem;
+  height: 1rem;
+  border: 1px solid #cccccc;
+}

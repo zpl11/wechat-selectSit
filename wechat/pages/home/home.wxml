@@ -1,9 +1,9 @@
-<view class="page">
+<view class="home page">
     <view class="page__hd" wx:if="{{showPageIndex == 1}}">
-        <mp-cells ext-class="my-cells" title="带说明的列表项">
+        <mp-cells ext-class="my-cells">
             <mp-cell wx:for="{{siteAray}}" wx:key='index' wx:for-item="item">
-                <view>{{item.day}}</view>
-                <view slot="footer">座位剩余:{{item.siteNumber}}</view>
+                <view>{{item.roomWeek}} <text class="time">{{item.roomTime}}</text> </view>
+                <view slot="footer">座位剩余:{{item.seatRemain}}</view>
             </mp-cell>
         </mp-cells>
     </view>

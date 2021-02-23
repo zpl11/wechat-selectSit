@@ -20,11 +20,34 @@ Page({
   },
   submitForm:function(e){
     console.log(this.data.studentNumber,this.data.studentPassoword);
-    if(this.data.studentNumber === '123' && this.data.studentPassoword === '123'){
-      wx.redirectTo({
-        url: '/pages/home/home',
-      })
-    }
+    // 在这里发送 ajax 请求，请求后台接口
+    wx.request({
+      url: 'http://localhost:8080/wechat/index',
+      method:'POST',
+      data: {
+        "studentNumber":this.data.studentNumber,
+        "studentPassoword":this.data.studentPassoword
+      },
+      header: {
+        'Content-Type':'application/x-www-form-urlencoded'
+      },
+      success: function(res){
+        if(res.data.studentId === null){
+          wx.showToast({
+              title: '请检查账号密码',
+              icon: 'none',
+              duration: 1000,
+          })
+        }else{
+          wx.redirectTo({
+            url: `/pages/home/home?studentId=${res.data.studentId}`,
+          })
+        }
+      },
+      fail:function(res){
+        console.log(res);
+      }
+    })
   },
   registerForm:function(e){
     wx.redirectTo({
