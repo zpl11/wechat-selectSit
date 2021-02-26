@@ -1,8 +1,8 @@
 {
   "pages":[
-    "pages/selectSite/selectSite",
-    "pages/home/home",
     "pages/login/login",
+    "pages/home/home",
+    "pages/selectSite/selectSite",
     "pages/index/index",
     "pages/logs/logs",
     "pages/my/my"
@@ -12,6 +12,22 @@
     "navigationBarBackgroundColor": "#fff",
     "navigationBarTitleText": "Weixin",
     "navigationBarTextStyle":"black"
+  },
+  "tabBar": {
+    "color": "#a9b7b7",
+    "selectedColor": "#11cd6e",
+    "borderStyle":"white",
+    "list": [{
+      "selectedIconPath": "pages/images/selected.png",
+      "iconPath": "pages/images/select-site.png",
+      "pagePath": "pages/index/index",
+      "text": "选座"
+    }, {
+      "selectedIconPath": "pages/images/my-selected.png",
+      "iconPath": "pages/images/my.png",
+      "pagePath": "pages/logs/logs",
+      "text": "日志"
+    }]
   },
   "style": "v2",
   "sitemapLocation": "sitemap.json"

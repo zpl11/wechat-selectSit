@@ -15,9 +15,7 @@ Page({
         "selectedIconPath": "/pages/images/my-selected.png"
     },
       ],
-      siteAray:[
-        
-      ]
+      siteAray:[]
   },
   tabChange(e) {
       this.setData({
@@ -42,6 +40,15 @@ Page({
        format = format.replace(formateArr[i], returnArr[i]);  
      }  
      return format;
+   },
+   goDetailSite(event){
+     let column = event.currentTarget.dataset.seatcolumn;
+     let seatrow = event.currentTarget.dataset.seatrow;
+     let roomTime = event.currentTarget.dataset.selectedtime;
+     console.log(event);
+     wx.navigateTo({
+       url: '../selectSite/selectSite?seatColumn='+column+'&seatRow='+seatrow+'&roomTime='+roomTime,
+     })
    },
   // 进入页面发送请求，查看当前可以使用的教室的数量
   sendDateRequest(){

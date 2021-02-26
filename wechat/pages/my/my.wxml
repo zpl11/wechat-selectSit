@@ -5,7 +5,8 @@
     <view>在图书馆时间:20171305221</view>
 
     <view>
-        <view>已预约座位信息:1.1日图书馆第三排第五列</view>
+        <view>已预约座位信息:{{roomTime}}图书馆第{{selectedRow}}排第{{selectedColumn}}列</view>
+        <canvas style="width: 200px; height: 200px;" canvas-id="myQrcode"></canvas>
         <button>取消预订</button>
     </view>
 </view>

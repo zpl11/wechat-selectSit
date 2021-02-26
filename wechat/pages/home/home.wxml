@@ -1,7 +1,7 @@
 <view class="home page">
     <view class="page__hd" wx:if="{{showPageIndex == 1}}">
         <mp-cells ext-class="my-cells">
-            <mp-cell wx:for="{{siteAray}}" wx:key='index' wx:for-item="item">
+            <mp-cell wx:for="{{siteAray}}" wx:key='index' wx:for-item="item" bindtap="goDetailSite" data-seatColumn="{{item.seatColumn}}" data-seatRow="{{item.seatRow}}" data-selectedTime="{{item.roomTime}}">
                 <view>{{item.roomWeek}} <text class="time">{{item.roomTime}}</text> </view>
                 <view slot="footer">座位剩余:{{item.seatRemain}}</view>
             </mp-cell>
